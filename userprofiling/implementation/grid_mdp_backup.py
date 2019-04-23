@@ -1,4 +1,12 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
+# @Author: dreamBoy
+# @Date:   2019-04-23 16:31:18
+# @Email:  wpf2106@gmail.com
+# @Desc:   Welcome to my world!
+# @Motto:  Brave & Naive!
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:33:21
+# Backup for q-learning 
 import logging
 import numpy as np
 import random
@@ -24,16 +32,10 @@ class GridEnv(gym.Env):
         
         self.x=list(catTempX)
         self.y=list(catTempY)
-        # self.x=[140,220,300,380,460,140,300,460]
-        # self.y=[250,250,250,250,250,150,150,150]
         self.terminate_states = dict()  #终止状态为字典格式
-        # self.terminate_states[6] = 1
-        # self.terminate_states[7] = 1
-        # self.terminate_states[8] = 1
 
         self.error_times = 0
         self.actions = ['a','b','c','d','e']
-        # self.actions = ['n','e','s','w']
 
         self.rewards = dict();        #回报的数据结构为字典
         self.rewards['116_a'] = 1
@@ -234,22 +236,7 @@ class GridEnv(gym.Env):
             self.line22 = rendering.Line((40, 420), (440, 420))
             self.line23 = rendering.Line((40, 460), (440, 460))
             self.line24 = rendering.Line((40, 500), (440, 500))
-            #创建第一个骷髅
-            # self.kulo1 = rendering.make_circle(40)
-            # self.circletrans = rendering.Transform(translation=(140,150))
-            # self.kulo1.add_attr(self.circletrans)
-            # self.kulo1.set_color(0,0,0)
-            # #创建第二个骷髅
-            # self.kulo2 = rendering.make_circle(40)
-            # self.circletrans = rendering.Transform(translation=(460, 150))
-            # self.kulo2.add_attr(self.circletrans)
-            # self.kulo2.set_color(0, 0, 0)
-            #创建金条
-            # self.gold = rendering.make_circle(40)
-            # self.circletrans = rendering.Transform(translation=(300, 150))
-            # self.gold.add_attr(self.circletrans)
-            # self.gold.set_color(1, 0.9, 0)
-            #创建机器人
+
             self.robot= rendering.make_circle(15)
             self.robotrans = rendering.Transform()
             self.robot.add_attr(self.robotrans)
@@ -304,18 +291,9 @@ class GridEnv(gym.Env):
             self.viewer.add_geom(self.line22)
             self.viewer.add_geom(self.line23)
             self.viewer.add_geom(self.line24)
-            # self.viewer.add_geom(self.gold)
             self.viewer.add_geom(self.robot)
 
         if self.state is None: return None
-        #self.robotrans.set_translation(self.x[self.state-1],self.y[self.state-1])
         self.robotrans.set_translation(self.x[self.state-1], self.y[self.state- 1])
 
         return self.viewer.render(return_rgb_array=mode == 'rgb_array')
-
-
-
-
-
-
-

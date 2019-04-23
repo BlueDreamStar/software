@@ -4,8 +4,8 @@
 # @Email:  wpf2106@gmail.com
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
-# @Last Modified by:   ppvsgg
-# @Last Modified time: 2019-02-18 17:07:47
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:25:13
 from user_profile_common_function import *
 from user_profile_constant import *
 from torch.autograd import Variable
@@ -15,7 +15,7 @@ import torch.utils.data as Data
 import torch.nn.functional as F
 
 def get_train_loader(REAL_TRACE):
-    print("DataLoadStart")
+    # print("DataLoadStart")
     time_arrays = np.arange(TIME_BUCKET_NUM)
     times = []
     for i in range(TRAIN_WINDOW_NUMS):
@@ -50,10 +50,6 @@ class LSTM(nn.Module):
         self.out = nn.Linear(32, 10) ## 64(label) + 1(time) + 1(gen) + 241(POI) 
         
     def forward(self, x, h_state):
-        # r_out shape (batch, time_step, output_size)
-        # h_n shape (n_layers, batch, hidden_size)
-        # h_c shape (n_layers, batch, hidden_size)
-        # r_out, (h_n, h_c) = self.rnn(x, None)   # None represents zero initial hidden state
         
         r_out, h_state = self.rnn(x, h_state)
 

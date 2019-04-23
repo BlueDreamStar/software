@@ -4,8 +4,8 @@
 # @Email:  wpf2106@gmail.com
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
-# @Last Modified by:   ppvsgg
-# @Last Modified time: 2019-01-06 21:26:04
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:30:57
 import numpy as np
 from user_profile_constant import *
 
@@ -68,24 +68,3 @@ class Traces(object):
         #############################
         """)
         # self.saveReward()
-        
-#     def getReward(self, stateValue):
-#         if not self.rewardSet.has_key(stateValue):
-#             return DEFAULT_REWARD
-#         else:
-#             return self.rewardSet[stateValue]
-        
-        
-#     def saveReward(self):
-#         for time_slot in range( TIME_BUCKET_NUM):
-#             for curState in range( BASE_STATE_NUM):
-#                 mapState = time_slot * BASE_STATE_NUM + curState 
-#                 tempArray = [self.getReward( ((time_slot + 1)% 24) * BASE_STATE_NUM + i) for i in range(BASE_STATE_NUM) ]
-#                 outStr = "%s|%s|%s\t%s" %(time_slot//24 + 1, time_slot % 24 + 1, curState + 1, str(tempArray) )
-#                 # print(outStr)
-#                 self.appendStr(outStr)
-                
-#     def appendStr(self, string):
-#         open("%s" %self.saveFile, "a").write(string+"\n")
-                 
-                

@@ -28,8 +28,8 @@ Embedding_K = 5
 STEP_WINDOWS = 10
 TRACE_LENGTH_STEPS = TIME_BUCKET_NUM * TRAIN_WINDOW_NUMS - TIME_BUCKET_NUM
 
-FILE_DIR = "/home/bil/xuying/for_paper/data/pengfei/dingwei_5000_user_profile/dingwei_5000_user_profile_add_ids"
-SAVE_DIR = "/home/bil/wpf/dingwei/outcome"
+FILE_DIR = "../datasets"
+SAVE_DIR = "../outcome"
 GYM_ENV_Name = 'UserProfile-v0'
 
 # Hyper Parameters

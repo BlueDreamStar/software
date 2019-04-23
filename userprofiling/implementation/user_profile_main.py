@@ -4,8 +4,8 @@
 # @Email:  wpf2106@gmail.com
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
-# @Last Modified by:   ppvsgg
-# @Last Modified time: 2019-02-18 17:06:11
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:30:09
 import sys
 import gym
 from user_profile_constant import *
@@ -51,19 +51,14 @@ def dqn_execute(dqn, env, REAL_TRACE, predict_trace, user_id):
     ### get the save dir
     log_dir, predict_dir, overlap_dir, max_overlap_dir = log_files_check("dqn", user_id)
 
+    ## 多个网络参数同时执行梯度下降的方法示例
     # params = list(dqn.eval_net.parameters()) + list(dqn2.eval_net.parameters()) 
     # optimizer = torch.optim.Adam(params, lr=LEARNING_RATE)
-    # for param in dqn.eval_net.parameters():
-    #     # print(param.data)
-    #     print(type(param.data), param.size())
-    # print(dqn.eval_net.parameters())
     
     max_overlap = 0
     for i_episode in range(MAX_EPISODE):
         s = env.reset()
         for step in range(TRACE_LENGTH_STEPS - 1):
-            # print("step",step)
-            # env.render()
             a = dqn.choose_action(s)
             # take action
             s_, info = env.step(a)
@@ -72,11 +67,7 @@ def dqn_execute(dqn, env, REAL_TRACE, predict_trace, user_id):
                 r = 1
             else:
                 r = -0.5
-            # if overlap_pro > max_overlap:
-            #     max_overlap = overlap_pro
-            #     print( REAL_TRACE[len(REAL_TRACE)-(TIME_BUCKET_NUM-1):] )
-            #     predict_trace =  update_predict_trace( np.array([REAL_TRACE[len(REAL_TRACE)-TIME_BUCKET_NUM], 0],int), env, (TIME_BUCKET_NUM-1))
-            #     print(predict_trace)
+                
             dqn.store_transition(s, a, r, s_)
             
             if dqn.memory_counter > MEMORY_CAPACITY:
@@ -172,6 +163,7 @@ def qlearning_execute(env, REAL_TRACE, predict_trace, user_id):
             key = "%d_%s"%(s,a)
             tempStr = "the qfunc of key (%s) is %f" %(key, qfunc[key])
             commonF.append_str(policy_value_dir,tempStr)
+
     #学到的策略为：
     for i in range(len(STATES)):
         if STATES[i] in terminate_states:
@@ -188,7 +180,6 @@ def lstm_execute(REAL_TRACE, predict_trace, user_id):
     h_state = None      # for initial hidden state
     optimizer = torch.optim.Adam(lstm.parameters(), lr=LEARNING_RATE)   # optimize all cnn parameters
     loss_func = nn.CrossEntropyLoss()            # the target label is not one-hotted
-
     
     train_loader= get_train_loader(REAL_TRACE)
     

@@ -4,8 +4,8 @@
 # @Email:  wpf2106@gmail.com
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
-# @Last Modified by:   ppvsgg
-# @Last Modified time: 2019-02-18 17:08:22
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:26:26
 import sys
 import gym
 import torch
@@ -48,7 +48,6 @@ def get_user_ids(sys_avgs):
         userIDs = np.arange(int(sys_avgs[1]), int(sys_avgs[2]) + 1)
         
     return userIDs
-
 
 ### get traces by userID
 def get_trace_list( userIDs):

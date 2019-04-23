@@ -4,8 +4,8 @@
 # @Email:  wpf2106@gmail.com
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
-# @Last Modified by:   ppvsgg
-# @Last Modified time: 2019-02-18 17:07:06
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2019-04-23 16:25:54
 # -*- coding: UTF-8 -*-
 import sys
 import gym
@@ -68,6 +68,7 @@ def qlearning(qfunc, alpha, env, REAL_TRACE):
         s1_num = s1[1] * BASE_STATE_NUM + s1[0]
 
         key = "%d_%s"%(s_num, a)
+        #
         if REAL_TRACE[(count+1)%TIME_BUCKET_NUM] == s1[0]:
             r = 1
         else:
